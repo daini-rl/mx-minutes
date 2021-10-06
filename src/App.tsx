@@ -1,7 +1,9 @@
+import Test from './sections/test';
+
 function App() {
     return (
-        <div>
-            <h1>Mx. Minutes</h1>
+        <div className='w3-row-padding w3-padding'>
+            <Test />
         </div>
     );
 }
