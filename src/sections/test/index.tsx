@@ -13,7 +13,7 @@ export default function Test() {
             <div className='w3-col l6'>
                 <Card title='Conditions'>
                     <Card isSecondary title='First meal of the day?'>
-                        <Select options={mealHours} />
+                        <Select defaultText='Choose an hour' options={mealHours} />
                     </Card>
                     <Card isSecondary title='Medicine(s)'>
                         <p>{'Name >'}</p>

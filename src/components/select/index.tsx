@@ -10,8 +10,8 @@ interface SelectI {
 
 export default function Select({ defaultText = 'Choose your option', options }: SelectI) {
     return (
-        <select className='w3-select w3-border w3-round' name='option'>
-            <option value='' disabled selected>
+        <select className='w3-select w3-border w3-round' name='option' defaultValue='default'>
+            <option value='default' disabled>
                 {defaultText}
             </option>
             {options.map((item, index) => (
