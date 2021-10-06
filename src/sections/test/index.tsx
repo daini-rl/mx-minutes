@@ -1,4 +1,11 @@
 import Card from '../../components/card';
+import Select, { OptionItemI } from '../../components/select';
+
+const mealHours: Array<OptionItemI> = [
+    { value: 7, text: '7:00' },
+    { value: 8, text: '8:00' },
+    { value: 9, text: '9:00' },
+];
 
 export default function Test() {
     return (
@@ -6,13 +13,13 @@ export default function Test() {
             <div className='w3-col l6'>
                 <Card title='Conditions'>
                     <Card isSecondary title='First meal of the day?'>
-                        <p>{'Time >'}</p>
+                        <Select options={mealHours} />
                     </Card>
                     <Card isSecondary title='Medicine(s)'>
                         <p>{'Name >'}</p>
+                        <button>{'Add medicine'}</button>
+                        <button>{'Time it'}</button>
                     </Card>
-                    <button>{'Add medicine'}</button>
-                    <button>{'Time it'}</button>
                 </Card>
             </div>
             <div className='w3-col l6'>
