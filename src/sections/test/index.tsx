@@ -1,5 +1,6 @@
 import Card from '../../components/card';
-import Select, { OptionItemI } from '../../components/select';
+import Select from '../../components/select';
+import Dropdown, { OptionItemI } from '../../components/dropdown';
 
 const mealHours: Array<OptionItemI> = [
     { value: 7, text: '7:00' },
@@ -14,6 +15,9 @@ export default function Test() {
                 <Card title='Conditions'>
                     <Card isSecondary title='First meal of the day?'>
                         <Select defaultText='Choose an hour' options={mealHours} />
+                    </Card>
+                    <Card isSecondary title='First meal of the day?'>
+                        <Dropdown defaultText='Choose an hour' />
                     </Card>
                     <Card isSecondary title='Medicine(s)'>
                         <p>{'Name >'}</p>

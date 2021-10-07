@@ -1,7 +1,4 @@
-export interface OptionItemI {
-    value: string | number;
-    text: string | number;
-}
+import { OptionItemI } from '../dropdown';
 
 interface SelectI {
     defaultText?: string;
