@@ -23,7 +23,9 @@ export default function Dropdown({ defaultText = 'Choose your option' }: Dropdow
         <div className={`w3-dropdown-click ${styles.dropdownContainer}`}>
             <button onClick={handleChange} className='w3-button w3-white w3-border w3-round'>
                 {defaultText}
-                <span className='w3-margin-left'>v</span>
+                <span className='w3-margin-left'>
+                    <i className='fa fa-caret-down'></i>
+                </span>
             </button>
             <div className={`w3-dropdown-content w3-bar-block w3-border ${isOpen ? 'w3-show' : ''}`}>
                 <a href='abc.com' className='w3-bar-item w3-button'>
