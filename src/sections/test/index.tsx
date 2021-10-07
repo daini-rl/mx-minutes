@@ -17,7 +17,7 @@ export default function Test() {
                         <Select defaultText='Choose an hour' options={mealHours} />
                     </Card>
                     <Card isSecondary title='First meal of the day?'>
-                        <Dropdown defaultText='Choose an hour' />
+                        <Dropdown defaultText='Choose an hour' options={mealHours} />
                     </Card>
                     <Card isSecondary title='Medicine(s)'>
                         <p>{'Name >'}</p>
