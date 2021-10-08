@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 
 import Card from '../../components/card';
 import Dropdown, { OptionItemI } from '../../components/dropdown';
@@ -13,6 +13,11 @@ const mealHours: Array<OptionItemI> = [
 
 export default function Test() {
     const [mealHour, setMealHour] = useState(-1);
+    const [name, setName] = useState('');
+
+    const handleName = (event: ChangeEvent<HTMLInputElement>) => {
+        setName(event.target.value);
+    };
 
     /* const handleMealHour = (hour: number) => {
         setMealHour(hour); // replace by dispatch in future
@@ -30,7 +35,12 @@ export default function Test() {
                         />
                     </Card>
                     <Card isSecondary title='Medicine(s)'>
-                        <Input />
+                        <Input
+                            placeholder='Medicine Name'
+                            value={name}
+                            handleValue={handleName}
+                            borderColor=''
+                        />
                         <button className='w3-button w3-white w3-border w3-round'>{'Add medicine'}</button>
                         <button className='w3-button w3-white w3-border w3-round'>{'Time it'}</button>
                     </Card>
