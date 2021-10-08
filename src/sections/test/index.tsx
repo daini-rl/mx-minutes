@@ -58,22 +58,14 @@ export default function Test() {
                             placeholder='Medicine Name'
                             value={medicineName}
                             handleValue={handleMedicineName}
-                            borderColor=''
+                            borderColor={medicineColor}
                         />
                         <Dropdown
                             defaultText='Pick a color'
                             options={medicinesColors}
                             handleDropdownValue={handleMedicineColor}
+                            borderColor={medicineColor}
                         />
-                        <br />
-                        <p
-                            className={`w3-border w3-border-${medicineColor} w3-round`}
-                            style={{ display: 'inline-flex', alignItems: 'center' }}>
-                            <span className='w3-margin-right'>
-                                <Badge color={medicineColor} />
-                            </span>
-                            Sample Text
-                        </p>
                         <br />
                         <button className='w3-button w3-white w3-border w3-round'>{'Add medicine'}</button>
                         <button className='w3-button w3-white w3-border w3-round'>{'Time it'}</button>
