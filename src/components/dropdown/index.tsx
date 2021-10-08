@@ -13,6 +13,7 @@ interface DropdownI {
     defaultText?: string;
     options: Array<OptionItemI>;
     handleDropdownValue: Function;
+    borderColor?: string;
 }
 
 export default function Dropdown({
@@ -20,6 +21,7 @@ export default function Dropdown({
     defaultText = 'Choose your option',
     options,
     handleDropdownValue,
+    borderColor,
 }: DropdownI) {
     const [selectedIndex, setSelectedIndex] = useState(-1);
     const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +45,7 @@ export default function Dropdown({
             )}
             <button
                 onClick={handleToogle}
-                className={`w3-button w3-white w3-border w3-round ${styles.dropdownButton}`}>
+                className={`w3-button w3-white w3-border w3-border-${borderColor} w3-round ${styles.dropdownButton}`}>
                 {selectedIndex === -1 ? defaultText : options[selectedIndex].text}
                 <span className='w3-margin-left'>
                     <i className='fa fa-caret-down'></i>
