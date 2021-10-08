@@ -9,12 +9,14 @@ export interface OptionItemI {
 }
 
 interface DropdownI {
+    labelText?: string;
     defaultText?: string;
     options: Array<OptionItemI>;
     handleDropdownValue: Function;
 }
 
 export default function Dropdown({
+    labelText,
     defaultText = 'Choose your option',
     options,
     handleDropdownValue,
@@ -34,7 +36,14 @@ export default function Dropdown({
 
     return (
         <div className={`w3-dropdown-click ${styles.dropdownContainer}`}>
-            <button onClick={handleToogle} className='w3-button w3-white w3-border w3-round'>
+            {labelText && (
+                <label className={styles.dropdownLabel}>
+                    <b>{labelText}</b>
+                </label>
+            )}
+            <button
+                onClick={handleToogle}
+                className={`w3-button w3-white w3-border w3-round ${styles.dropdownButton}`}>
                 {selectedIndex === -1 ? defaultText : options[selectedIndex].text}
                 <span className='w3-margin-left'>
                     <i className='fa fa-caret-down'></i>

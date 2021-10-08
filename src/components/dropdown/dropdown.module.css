@@ -1,3 +1,11 @@
 .dropdownContainer:hover {
     background-color: transparent;
 }
+
+.dropdownButton:hover {
+    background-color: transparent !important;
+}
+
+.dropdownLabel {
+    display: block;
+}
