@@ -2,10 +2,15 @@
     background-color: transparent;
 }
 
+.dropdownLabel {
+    display: block;
+}
+
 .dropdownButton:hover {
     background-color: transparent !important;
 }
 
-.dropdownLabel {
-    display: block;
+.dropdownOptionItemContainer {
+    display: inline-flex !important;
+    align-items: center;
 }
