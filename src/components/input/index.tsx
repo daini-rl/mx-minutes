@@ -7,7 +7,7 @@ interface InputI {
     borderColor?: string;
 }
 
-export default function Input({ placeholder = '', value, handleValue, borderColor }: InputI) {
+export default function Input({ placeholder, value, handleValue, borderColor }: InputI) {
     return (
         <input
             className={`w3-input w3-border w3-border-${borderColor} w3-round`}
