@@ -6,6 +6,7 @@ import Dropdown, { OptionItemI } from '../../components/dropdown';
 import Input from '../../components/input';
 import Label from '../../components/label';
 import Checkbox from '../../components/checkbox';
+import Button from '../../components/button';
 
 import { w3cssColors } from '../../utils/colors';
 
@@ -105,8 +106,22 @@ export default function Test() {
                             handleDropdownValue={setMedicineStartHour}
                             borderColor={medicineColor}
                         />
-                        <button className='w3-button w3-white w3-border w3-round'>{'Add medicine'}</button>
-                        <button className='w3-button w3-white w3-border w3-round'>{'Time it'}</button>
+                        <br />
+                        <Button
+                            buttonText={'Discard'}
+                            buttonVariant='outlined'
+                            buttonStateType='danger'
+                            paddingSize='small'
+                        />
+                        <Button
+                            buttonText={'Save'}
+                            buttonVariant='outlined'
+                            buttonColor={medicineColor}
+                            paddingSize='small'
+                        />
+                        <br />
+                        <Button buttonText={'Add medicine'} buttonStateType='info' />
+                        <Button buttonText={'Time it'} buttonStateType='success' />
                     </Card>
                 </Card>
             </div>
