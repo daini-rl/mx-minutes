@@ -4,6 +4,7 @@ import Card from '../../components/card';
 import Badge from '../../components/badge';
 import Dropdown, { OptionItemI } from '../../components/dropdown';
 import Input from '../../components/input';
+import Label from '../../components/label';
 
 import { w3cssColors } from '../../utils/colors';
 
@@ -23,10 +24,18 @@ const colorPickerOptions = (): Array<OptionItemI> => {
     return colorOptions;
 };
 
+const frequencyHours: Array<OptionItemI> = [
+    { value: 6, text: 'Every 6 hours' },
+    { value: 8, text: 'Every 8 hours' },
+    { value: 12, text: 'Every 12 hours' },
+    { value: 24, text: 'Every 24 hours' },
+];
+
 export default function Test() {
     const [mealHour, setMealHour] = useState(-1);
     const [medicineName, setMedicineName] = useState('');
     const [medicineColor, setMedicineColor] = useState('');
+    const [medicineFrequency, setMedicineFrequency] = useState(-1);
 
     const medicinesColors = colorPickerOptions(); // affect this as selected
 
@@ -66,7 +75,14 @@ export default function Test() {
                             handleDropdownValue={handleMedicineColor}
                             borderColor={medicineColor}
                         />
-                        <br />
+                        <Label labelText='Frequency' textColor={medicineColor} />
+                        <Dropdown
+                            defaultText='Choose a frequency'
+                            options={frequencyHours}
+                            handleDropdownValue={setMedicineFrequency}
+                            borderColor={medicineColor}
+                        />
+                        <Label labelText='Start at breakfast' textColor={medicineColor} />
                         <button className='w3-button w3-white w3-border w3-round'>{'Add medicine'}</button>
                         <button className='w3-button w3-white w3-border w3-round'>{'Time it'}</button>
                     </Card>
