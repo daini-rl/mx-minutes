@@ -5,6 +5,7 @@ import Badge from '../../components/badge';
 import Dropdown, { OptionItemI } from '../../components/dropdown';
 import Input from '../../components/input';
 import Label from '../../components/label';
+import Checkbox from '../../components/checkbox';
 
 import { w3cssColors } from '../../utils/colors';
 
@@ -31,11 +32,20 @@ const frequencyHours: Array<OptionItemI> = [
     { value: 24, text: 'Every 24 hours' },
 ];
 
+const medicineStartHours: Array<OptionItemI> = [
+    { value: 8, text: '8:00' },
+    { value: 9, text: '9:00' },
+    { value: 10, text: '10:00' },
+    { value: 11, text: '11:00' },
+];
+
 export default function Test() {
     const [mealHour, setMealHour] = useState(-1);
     const [medicineName, setMedicineName] = useState('');
     const [medicineColor, setMedicineColor] = useState('');
     const [medicineFrequency, setMedicineFrequency] = useState(-1);
+    const [medicineAtBreakfast, setMedicineAtBreakfast] = useState(true);
+    const [medicineStartHour, setMedicineStartHour] = useState(-1);
 
     const medicinesColors = colorPickerOptions(); // affect this as selected
 
@@ -49,6 +59,10 @@ export default function Test() {
 
     const handleMedicineColor = (tempColor: string) => {
         setMedicineColor(tempColor); // extra step but will be useful in the future... or in the past
+    };
+
+    const handleMedicineAtBreakfast = (event: ChangeEvent<HTMLInputElement>) => {
+        setMedicineAtBreakfast(event.target.checked);
     };
 
     return (
@@ -83,6 +97,14 @@ export default function Test() {
                             borderColor={medicineColor}
                         />
                         <Label labelText='Start at breakfast' textColor={medicineColor} />
+                        <Checkbox checked={medicineAtBreakfast} handleCheck={handleMedicineAtBreakfast} />
+                        <Label labelText='Start at' textColor={medicineColor} />
+                        <Dropdown
+                            defaultText='Choose an hour'
+                            options={medicineStartHours}
+                            handleDropdownValue={setMedicineStartHour}
+                            borderColor={medicineColor}
+                        />
                         <button className='w3-button w3-white w3-border w3-round'>{'Add medicine'}</button>
                         <button className='w3-button w3-white w3-border w3-round'>{'Time it'}</button>
                     </Card>
