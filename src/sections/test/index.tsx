@@ -1,12 +1,7 @@
-import { useState, ChangeEvent } from 'react';
+import { useState } from 'react';
 
-import Card from '../../components/card';
-import Badge from '../../components/badge';
-import Dropdown, { OptionItemI } from '../../components/dropdown';
-import Input from '../../components/input';
-import Label from '../../components/label';
-import Checkbox from '../../components/checkbox';
-import Button from '../../components/button';
+import { Card, Badge, Dropdown, Button, MedicationCard } from '../../components';
+import { OptionItemI } from '../../components/dropdown';
 
 import { w3cssColors } from '../../utils/colors';
 
@@ -33,7 +28,7 @@ const frequencyHours: Array<OptionItemI> = [
     { value: 24, text: 'Every 24 hours' },
 ];
 
-const medicineStartHours: Array<OptionItemI> = [
+const medicationStartHours: Array<OptionItemI> = [
     { value: 8, text: '8:00' },
     { value: 9, text: '9:00' },
     { value: 10, text: '10:00' },
@@ -42,28 +37,14 @@ const medicineStartHours: Array<OptionItemI> = [
 
 export default function Test() {
     const [mealHour, setMealHour] = useState(-1);
-    const [medicineName, setMedicineName] = useState('');
-    const [medicineColor, setMedicineColor] = useState('');
-    const [medicineFrequency, setMedicineFrequency] = useState(-1);
-    const [medicineAtBreakfast, setMedicineAtBreakfast] = useState(true);
-    const [medicineStartHour, setMedicineStartHour] = useState(-1);
-
-    const medicinesColors = colorPickerOptions(); // affect this as selected
+    const medicationsColors = colorPickerOptions(); // affect this as selected
 
     /* const handleMealHour = (hour: number) => {
         setMealHour(hour); // replace by dispatch in future
     }; */
 
-    const handleMedicineName = (event: ChangeEvent<HTMLInputElement>) => {
-        setMedicineName(event.target.value);
-    };
-
-    const handleMedicineColor = (tempColor: string) => {
-        setMedicineColor(tempColor); // extra step but will be useful in the future... or in the past
-    };
-
-    const handleMedicineAtBreakfast = (event: ChangeEvent<HTMLInputElement>) => {
-        setMedicineAtBreakfast(event.target.checked);
+    const handleSave = (medication: any) => {
+        console.log(medication);
     };
 
     return (
@@ -77,50 +58,14 @@ export default function Test() {
                             handleDropdownValue={setMealHour}
                         />
                     </Card>
-                    <Card isSecondary title='Medicine(s)'>
-                        <Input
-                            placeholder='Medicine Name'
-                            value={medicineName}
-                            handleValue={handleMedicineName}
-                            borderColor={medicineColor}
+                    <Card isSecondary title='Medication(s)'>
+                        <MedicationCard
+                            medicationsColors={medicationsColors}
+                            frequencyHours={frequencyHours}
+                            medicationStartHours={medicationStartHours}
+                            handleSaveMedication={handleSave}
                         />
-                        <Dropdown
-                            defaultText='Pick a color'
-                            options={medicinesColors}
-                            handleDropdownValue={handleMedicineColor}
-                            borderColor={medicineColor}
-                        />
-                        <Label labelText='Frequency' textColor={medicineColor} />
-                        <Dropdown
-                            defaultText='Choose a frequency'
-                            options={frequencyHours}
-                            handleDropdownValue={setMedicineFrequency}
-                            borderColor={medicineColor}
-                        />
-                        <Label labelText='Start at breakfast' textColor={medicineColor} />
-                        <Checkbox checked={medicineAtBreakfast} handleCheck={handleMedicineAtBreakfast} />
-                        <Label labelText='Start at' textColor={medicineColor} />
-                        <Dropdown
-                            defaultText='Choose an hour'
-                            options={medicineStartHours}
-                            handleDropdownValue={setMedicineStartHour}
-                            borderColor={medicineColor}
-                        />
-                        <br />
-                        <Button
-                            buttonText={'Discard'}
-                            buttonVariant='outlined'
-                            buttonStateType='danger'
-                            paddingSize='small'
-                        />
-                        <Button
-                            buttonText={'Save'}
-                            buttonVariant='outlined'
-                            buttonColor={medicineColor}
-                            paddingSize='small'
-                        />
-                        <br />
-                        <Button buttonText={'Add medicine'} buttonStateType='info' />
+                        <Button buttonText={'Add medication'} buttonStateType='info' />
                         <Button buttonText={'Time it'} buttonStateType='success' />
                     </Card>
                 </Card>
