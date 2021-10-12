@@ -1,7 +1,9 @@
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent } from 'react';
 
-import { Input, Dropdown, Label, Checkbox, Button } from '..';
+import { Input, Dropdown, Label, Checkbox, Button } from '../../components';
 import { OptionItemI } from '../dropdown';
+
+import styles from './medicationCard.module.css';
 
 interface MedicationCardI {
     medicationsColors: Array<OptionItemI>;
@@ -59,49 +61,79 @@ export default function MedicationCard({
 
     return (
         <div className={`w3-container w3-padding-16 w3-border w3-border-${medicationColor} w3-round`}>
-            <Input
-                placeholder='Medication Name'
-                value={medicationName}
-                handleValue={handleMedicationName}
-                borderColor={medicationColor}
-            />
-            <Dropdown
-                defaultText='Pick a color'
-                options={medicationsColors}
-                handleDropdownValue={handleMedicationColor}
-                borderColor={medicationColor}
-            />
-            <Label labelText='Frequency' textColor={medicationColor} />
-            <Dropdown
-                defaultText='Choose a frequency'
-                options={frequencyHours}
-                handleDropdownValue={setMedicationFrequency}
-                borderColor={medicationColor}
-            />
-            <Label labelText='Start at breakfast' textColor={medicationColor} />
-            <Checkbox checked={medicationAtBreakfast} handleCheck={handleMedicationAtBreakfast} />
-            <Label labelText='Start at' textColor={medicationColor} />
-            <Dropdown
-                defaultText='Choose an hour'
-                options={medicationStartHours}
-                handleDropdownValue={setMedicationStartHour}
-                borderColor={medicationColor}
-            />
-            <br />
-            <Button
-                buttonText={'Discard'}
-                buttonVariant='outlined'
-                buttonStateType='danger'
-                paddingSize='small'
-                onClick={handleCancel}
-            />
-            <Button
-                buttonText={'Save'}
-                buttonVariant='outlined'
-                buttonColor={medicationColor}
-                paddingSize='small'
-                onClick={handleSubmitMedication}
-            />
+            <div className={`${styles.medicationCardRow}`}>
+                <div>
+                    <Input
+                        placeholder='Medication Name'
+                        value={medicationName}
+                        handleValue={handleMedicationName}
+                        borderColor={medicationColor}
+                    />
+                </div>
+                <div>
+                    <Dropdown
+                        defaultText='Pick a color'
+                        options={medicationsColors}
+                        handleDropdownValue={handleMedicationColor}
+                        borderColor={medicationColor}
+                    />
+                </div>
+            </div>
+            <div className={styles.medicationCardRow}>
+                <div>
+                    <Label labelText='Frequency' textColor={medicationColor} />
+                </div>
+                <div>
+                    <Dropdown
+                        defaultText='Choose a frequency'
+                        options={frequencyHours}
+                        handleDropdownValue={setMedicationFrequency}
+                        borderColor={medicationColor}
+                    />
+                </div>
+            </div>
+            <div className={styles.medicationCardRow}>
+                <div>
+                    <Label labelText='Start at breakfast' textColor={medicationColor} />
+                </div>
+                <div>
+                    <Checkbox checked={medicationAtBreakfast} handleCheck={handleMedicationAtBreakfast} />
+                </div>
+            </div>
+            <div className={styles.medicationCardRow}>
+                <div>
+                    <Label labelText='Start at' textColor={medicationColor} />
+                </div>
+                <div>
+                    <Dropdown
+                        defaultText='Choose an hour'
+                        options={medicationStartHours}
+                        handleDropdownValue={setMedicationStartHour}
+                        borderColor={medicationColor}
+                    />
+                </div>
+            </div>
+            <div className={styles.medicationCardRow}>
+                <div>
+                    {' '}
+                    <Button
+                        buttonText={'Discard'}
+                        buttonVariant='outlined'
+                        buttonStateType='danger'
+                        paddingSize='small'
+                        onClick={handleCancel}
+                    />
+                </div>
+                <div>
+                    <Button
+                        buttonText={'Save'}
+                        buttonVariant='outlined'
+                        buttonColor={medicationColor}
+                        paddingSize='small'
+                        onClick={handleSubmitMedication}
+                    />
+                </div>
+            </div>
         </div>
     );
 }
