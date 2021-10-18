@@ -98,18 +98,20 @@ export default function MedicationCard({
                     <Checkbox checked={medicationAtBreakfast} handleCheck={handleMedicationAtBreakfast} />
                 </div>
             </div>
-            <div className={styles.medicationCardRow}>
-                <div>
-                    <Label labelText='Start at' />
+            {!medicationAtBreakfast && (
+                <div className={styles.medicationCardRow}>
+                    <div>
+                        <Label labelText='Start at' />
+                    </div>
+                    <div>
+                        <Dropdown
+                            defaultText='Choose an hour'
+                            options={medicationStartHours}
+                            handleDropdownValue={setMedicationStartHour}
+                        />
+                    </div>
                 </div>
-                <div>
-                    <Dropdown
-                        defaultText='Choose an hour'
-                        options={medicationStartHours}
-                        handleDropdownValue={setMedicationStartHour}
-                    />
-                </div>
-            </div>
+            )}
             <div className={styles.medicationCardButtonsRow}>
                 <div>
                     <Button
