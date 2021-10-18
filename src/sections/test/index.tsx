@@ -55,6 +55,7 @@ export default function Test() {
                         <Dropdown
                             defaultText='Choose an hour'
                             options={mealHours}
+                            value={mealHour}
                             handleDropdownValue={setMealHour}
                         />
                     </Card>

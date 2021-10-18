@@ -12,6 +12,7 @@ interface DropdownI {
     labelText?: string;
     defaultText?: string;
     options: Array<OptionItemI>;
+    value: string | number;
     handleDropdownValue: Function;
     borderColor?: string;
 }
@@ -20,10 +21,11 @@ export default function Dropdown({
     labelText,
     defaultText = 'Choose your option',
     options,
+    value,
     handleDropdownValue,
     borderColor,
 }: DropdownI) {
-    const [selectedIndex, setSelectedIndex] = useState(-1);
+    const [selectedIndex, setSelectedIndex] = useState(options.map(option => option.value).indexOf(value));
     const [isOpen, setIsOpen] = useState(false);
 
     const handleToogle = () => {

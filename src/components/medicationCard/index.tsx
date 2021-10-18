@@ -29,9 +29,11 @@ export default function MedicationCard({
         setMedicationName(event.target.value);
     };
 
+    /* this might be useful in the future... or in the past
     const handleMedicationColor = (tempColor: string) => {
-        setMedicationColor(tempColor); // extra step but will be useful in the future... or in the past
+        setMedicationColor(tempColor);
     };
+    */
 
     const handleMedicationAtBreakfast = (event: ChangeEvent<HTMLInputElement>) => {
         setMedicationAtBreakfast(event.target.checked);
@@ -96,7 +98,8 @@ export default function MedicationCard({
                             <Dropdown
                                 defaultText='Pick a color'
                                 options={medicationsColors}
-                                handleDropdownValue={handleMedicationColor}
+                                value={medicationColor}
+                                handleDropdownValue={setMedicationColor}
                             />
                         </div>
                     </div>
@@ -108,6 +111,7 @@ export default function MedicationCard({
                             <Dropdown
                                 defaultText='Choose a frequency'
                                 options={frequencyHours}
+                                value={medicationFrequency}
                                 handleDropdownValue={setMedicationFrequency}
                             />
                         </div>
@@ -132,6 +136,7 @@ export default function MedicationCard({
                                 <Dropdown
                                     defaultText='Choose an hour'
                                     options={medicationStartHours}
+                                    value={medicationStartHour}
                                     handleDropdownValue={setMedicationStartHour}
                                 />
                             </div>
@@ -155,7 +160,7 @@ export default function MedicationCard({
                         buttonVariant='outlined'
                         buttonStateType='info'
                         paddingSize='small'
-                        onClick={handleSubmitMedication}
+                        onClick={isActive ? handleSubmitMedication : () => setIsActive(!isActive)}
                     />
                 </div>
             </div>
