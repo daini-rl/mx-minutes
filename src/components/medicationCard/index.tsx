@@ -60,14 +60,14 @@ export default function MedicationCard({
     };
 
     return (
-        <div className={`w3-container w3-padding-16 w3-border w3-border-${medicationColor} w3-round`}>
+        <div
+            className={`w3-container w3-padding-16 w3-margin-bottom w3-border w3-border-${medicationColor} w3-round`}>
             <div className={`${styles.medicationCardRow}`}>
                 <div>
                     <Input
                         placeholder='Medication Name'
                         value={medicationName}
                         handleValue={handleMedicationName}
-                        borderColor={medicationColor}
                     />
                 </div>
                 <div>
@@ -75,26 +75,24 @@ export default function MedicationCard({
                         defaultText='Pick a color'
                         options={medicationsColors}
                         handleDropdownValue={handleMedicationColor}
-                        borderColor={medicationColor}
                     />
                 </div>
             </div>
             <div className={styles.medicationCardRow}>
                 <div>
-                    <Label labelText='Frequency' textColor={medicationColor} />
+                    <Label labelText='Frequency' />
                 </div>
                 <div>
                     <Dropdown
                         defaultText='Choose a frequency'
                         options={frequencyHours}
                         handleDropdownValue={setMedicationFrequency}
-                        borderColor={medicationColor}
                     />
                 </div>
             </div>
             <div className={styles.medicationCardRow}>
                 <div>
-                    <Label labelText='Start at breakfast' textColor={medicationColor} />
+                    <Label labelText='Start at breakfast' />
                 </div>
                 <div>
                     <Checkbox checked={medicationAtBreakfast} handleCheck={handleMedicationAtBreakfast} />
@@ -102,20 +100,18 @@ export default function MedicationCard({
             </div>
             <div className={styles.medicationCardRow}>
                 <div>
-                    <Label labelText='Start at' textColor={medicationColor} />
+                    <Label labelText='Start at' />
                 </div>
                 <div>
                     <Dropdown
                         defaultText='Choose an hour'
                         options={medicationStartHours}
                         handleDropdownValue={setMedicationStartHour}
-                        borderColor={medicationColor}
                     />
                 </div>
             </div>
-            <div className={styles.medicationCardRow}>
+            <div className={styles.medicationCardButtonsRow}>
                 <div>
-                    {' '}
                     <Button
                         buttonText={'Discard'}
                         buttonVariant='outlined'
@@ -128,7 +124,7 @@ export default function MedicationCard({
                     <Button
                         buttonText={'Save'}
                         buttonVariant='outlined'
-                        buttonColor={medicationColor}
+                        buttonStateType='info'
                         paddingSize='small'
                         onClick={handleSubmitMedication}
                     />

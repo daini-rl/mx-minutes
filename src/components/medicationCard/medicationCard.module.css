@@ -6,19 +6,10 @@
     margin-bottom: 8px;
 }
 
-/* 
-.medicationCardCol8 {
-    flex-basis: 66.666667%;
-    max-width: 66.666667%;
-}
-
-.medicationCardCol4 {
-    flex-basis: 33.333333%;
-    max-width: 33.333333%;
-}
-
-.displayFlexJustifyEnd {
+.medicationCardButtonsRow {
+    height: 32px;
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
 }
-*/
