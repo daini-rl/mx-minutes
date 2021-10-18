@@ -62,7 +62,7 @@ export default function MedicationCard({
     return (
         <div
             className={`w3-container w3-padding-16 w3-margin-bottom w3-border w3-border-${medicationColor} w3-round`}>
-            <div className={`${styles.medicationCardRow}`}>
+            <div className={styles.medicationCardRow}>
                 <div>
                     <Input
                         placeholder='Medication Name'

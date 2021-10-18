@@ -58,15 +58,21 @@ export default function Test() {
                             handleDropdownValue={setMealHour}
                         />
                     </Card>
-                    <Card isSecondary title='Medication(s)'>
+                    <Card
+                        isSecondary
+                        title='Medication(s)'
+                        buttons={
+                            <>
+                                <Button buttonText={'Add medication'} buttonStateType='info' />
+                                <Button buttonText={'Time it'} buttonStateType='success' />
+                            </>
+                        }>
                         <MedicationCard
                             medicationsColors={medicationsColors}
                             frequencyHours={frequencyHours}
                             medicationStartHours={medicationStartHours}
                             handleSaveMedication={handleSave}
                         />
-                        <Button buttonText={'Add medication'} buttonStateType='info' />
-                        <Button buttonText={'Time it'} buttonStateType='success' />
                     </Card>
                 </Card>
             </div>
