@@ -48,8 +48,14 @@ export default function MedicationCard({
     };
 
     const handleCancel = () => {
-        clearState();
+        clearState(); // might be useless in the future...
     };
+
+    const saveButtonIsDisabled =
+        medicationName === '' ||
+        medicationColor === '' ||
+        medicationFrequency === -1 ||
+        (!medicationAtBreakfast ? medicationStartHour === -1 : false);
 
     const handleSubmitMedication = () => {
         const medication = {
@@ -155,13 +161,24 @@ export default function MedicationCard({
                     />
                 </div>
                 <div>
-                    <Button
-                        buttonText={isActive ? 'Save' : 'Edit'}
-                        buttonVariant='outlined'
-                        buttonStateType='info'
-                        paddingSize='small'
-                        onClick={isActive ? handleSubmitMedication : () => setIsActive(!isActive)}
-                    />
+                    {isActive ? (
+                        <Button
+                            buttonText={'Save'}
+                            buttonVariant='outlined'
+                            buttonStateType='info'
+                            paddingSize='small'
+                            disabled={saveButtonIsDisabled}
+                            onClick={handleSubmitMedication}
+                        />
+                    ) : (
+                        <Button
+                            buttonText={'Edit'}
+                            buttonVariant='outlined'
+                            buttonStateType='info'
+                            paddingSize='small'
+                            onClick={() => setIsActive(!isActive)}
+                        />
+                    )}
                 </div>
             </div>
         </div>
