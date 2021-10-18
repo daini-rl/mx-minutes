@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from 'react';
 
-import { Input, Dropdown, Label, Checkbox, Button } from '../../components';
+import { Input, Dropdown, Label, Checkbox, Button, Badge } from '../../components';
 import { OptionItemI } from '../dropdown';
 
 import styles from './medicationCard.module.css';
@@ -23,6 +23,7 @@ export default function MedicationCard({
     const [medicationFrequency, setMedicationFrequency] = useState(-1);
     const [medicationAtBreakfast, setMedicationAtBreakfast] = useState(true);
     const [medicationStartHour, setMedicationStartHour] = useState(-1);
+    const [isActive, setIsActive] = useState(true);
 
     const handleMedicationName = (event: ChangeEvent<HTMLInputElement>) => {
         setMedicationName(event.target.value);
@@ -57,62 +58,88 @@ export default function MedicationCard({
             medicationStartHour,
         };
         handleSaveMedication(medication);
+        setIsActive(!isActive);
     };
 
     return (
         <div
             className={`w3-container w3-padding-16 w3-margin-bottom w3-border w3-border-${medicationColor} w3-round`}>
-            <div className={styles.medicationCardRow}>
-                <div>
-                    <Input
-                        placeholder='Medication Name'
-                        value={medicationName}
-                        handleValue={handleMedicationName}
-                    />
-                </div>
-                <div>
-                    <Dropdown
-                        defaultText='Pick a color'
-                        options={medicationsColors}
-                        handleDropdownValue={handleMedicationColor}
-                    />
-                </div>
-            </div>
-            <div className={styles.medicationCardRow}>
-                <div>
-                    <Label labelText='Frequency' />
-                </div>
-                <div>
-                    <Dropdown
-                        defaultText='Choose a frequency'
-                        options={frequencyHours}
-                        handleDropdownValue={setMedicationFrequency}
-                    />
-                </div>
-            </div>
-            <div className={styles.medicationCardRow}>
-                <div>
-                    <Label labelText='Start at breakfast' />
-                </div>
-                <div>
-                    <Checkbox checked={medicationAtBreakfast} handleCheck={handleMedicationAtBreakfast} />
-                </div>
-            </div>
-            {!medicationAtBreakfast && (
-                <div className={styles.medicationCardRow}>
-                    <div>
-                        <Label labelText='Start at' />
+            {!isActive ? (
+                <>
+                    <div className={styles.medicationInactiveCardRow}>
+                        <div className={styles.medicationInactiveName}>
+                            <span className='w3-margin-right'>{<Badge color={medicationColor} />}</span>
+                            <h5 className={styles.medicationInactiveText}>{medicationName}</h5>
+                        </div>
                     </div>
-                    <div>
-                        <Dropdown
-                            defaultText='Choose an hour'
-                            options={medicationStartHours}
-                            handleDropdownValue={setMedicationStartHour}
-                        />
+                    <div className={styles.medicationInactiveCardRow}>
+                        <p className={styles.medicationInactiveText}>
+                            {'Every ' + medicationFrequency + ' hours'}
+                        </p>
+                        <p className={styles.medicationInactiveText}>
+                            {'Starting at ' +
+                                (medicationAtBreakfast ? 'breakfast' : medicationStartHour + ' am')}
+                        </p>
                     </div>
-                </div>
+                </>
+            ) : (
+                <>
+                    <div className={styles.medicationCardRow}>
+                        <div>
+                            <Input
+                                placeholder='Medication Name'
+                                value={medicationName}
+                                handleValue={handleMedicationName}
+                            />
+                        </div>
+                        <div>
+                            <Dropdown
+                                defaultText='Pick a color'
+                                options={medicationsColors}
+                                handleDropdownValue={handleMedicationColor}
+                            />
+                        </div>
+                    </div>
+                    <div className={styles.medicationCardRow}>
+                        <div>
+                            <Label labelText='Frequency' />
+                        </div>
+                        <div>
+                            <Dropdown
+                                defaultText='Choose a frequency'
+                                options={frequencyHours}
+                                handleDropdownValue={setMedicationFrequency}
+                            />
+                        </div>
+                    </div>
+                    <div className={styles.medicationCardRow}>
+                        <div>
+                            <Label labelText='Start at breakfast' />
+                        </div>
+                        <div>
+                            <Checkbox
+                                checked={medicationAtBreakfast}
+                                handleCheck={handleMedicationAtBreakfast}
+                            />
+                        </div>
+                    </div>
+                    {!medicationAtBreakfast && (
+                        <div className={styles.medicationCardRow}>
+                            <div>
+                                <Label labelText='Start at' />
+                            </div>
+                            <div>
+                                <Dropdown
+                                    defaultText='Choose an hour'
+                                    options={medicationStartHours}
+                                    handleDropdownValue={setMedicationStartHour}
+                                />
+                            </div>
+                        </div>
+                    )}
+                </>
             )}
-            <div className={styles.medicationCardButtonsRow}>
+            <div className={`${styles.medicationCardButtonsRow} ${!isActive ? 'w3-margin-top' : ''}`}>
                 <div>
                     <Button
                         buttonText={'Discard'}
@@ -124,7 +151,7 @@ export default function MedicationCard({
                 </div>
                 <div>
                     <Button
-                        buttonText={'Save'}
+                        buttonText={isActive ? 'Save' : 'Edit'}
                         buttonVariant='outlined'
                         buttonStateType='info'
                         paddingSize='small'
