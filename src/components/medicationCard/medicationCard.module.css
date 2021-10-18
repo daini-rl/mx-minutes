@@ -1,0 +1,30 @@
+.medicationCardRow {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.medicationInactiveCardRow {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.medicationInactiveName {
+    display: inline-flex;
+    align-items: center;
+}
+
+.medicationInactiveText {
+    margin: 0px;
+}
+
+.medicationCardButtonsRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+}

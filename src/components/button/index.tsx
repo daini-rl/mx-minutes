@@ -1,3 +1,5 @@
+import { MouseEventHandler } from 'react';
+
 import styles from './button.module.css';
 
 interface ButtonI {
@@ -7,6 +9,7 @@ interface ButtonI {
     buttonStateType?: 'success' | 'info' | 'danger';
     buttonColor?: string;
     paddingSize?: 'medium' | 'small';
+    onClick?: MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean;
 }
 
@@ -17,6 +20,7 @@ export default function Button({
     buttonStateType,
     buttonColor,
     paddingSize,
+    onClick,
     disabled,
 }: ButtonI) {
     const buttonStateColor =
@@ -30,6 +34,7 @@ export default function Button({
                     : `w3-${buttonStateType ? buttonStateColor : buttonColor}`
             } w3-padding-${paddingSize === 'small' ? 'small' : ''} ${styles.button}`}
             type={buttonType}
+            onClick={onClick}
             disabled={disabled}>
             {buttonText}
         </button>
