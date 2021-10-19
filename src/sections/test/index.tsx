@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Card, Badge, Dropdown, Button, MedicationCard } from '../../components';
+import { Card, Badge, Dropdown, Button, MedicationCard, DayCard } from '../../components';
 import { OptionItemI } from '../../components/dropdown';
 
 import { w3cssColors } from '../../utils/colors';
@@ -50,7 +50,7 @@ export default function Test() {
     return (
         <>
             <div className='w3-col l6'>
-                <Card title='Conditions'>
+                <Card title='Conditions:'>
                     <Card isSecondary title='First meal of the day?'>
                         <Dropdown
                             defaultText='Choose an hour'
@@ -79,12 +79,7 @@ export default function Test() {
             </div>
             <div className='w3-col l6'>
                 <Card title='Mx. Minutes says:'>
-                    <Card isSecondary title='First day:'>
-                        <p>{'11:11'}</p>
-                    </Card>
-                    <Card isSecondary title='Next day:'>
-                        <p>{'4:20'}</p>
-                    </Card>
+                    <DayCard />
                 </Card>
             </div>
         </>

@@ -1,0 +1,14 @@
+.hourSection {
+    margin-bottom: 24px;
+}
+
+.medicationsList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.medicationTitle {
+    display: inline-flex;
+    align-items: center;
+}
