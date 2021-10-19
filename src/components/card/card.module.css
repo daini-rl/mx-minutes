@@ -1,3 +1,7 @@
+.primaryTitle {
+    margin: 0px;
+}
+
 .buttonsRow {
     display: flex;
     align-items: center;
