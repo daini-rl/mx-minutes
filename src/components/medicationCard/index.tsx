@@ -75,16 +75,14 @@ export default function MedicationCard({
             {!isActive ? (
                 <>
                     <div className={styles.medicationInactiveCardRow}>
-                        <div className={styles.medicationInactiveName}>
-                            <span className='w3-margin-right'>{<Badge color={medicationColor} />}</span>
-                            <h5 className={styles.medicationInactiveText}>{medicationName}</h5>
-                        </div>
+                        <h5 className={styles.medicationInactiveName}>
+                            <span className='w3-margin-right'>{<Badge color={medicationColor} />}</span>{' '}
+                            {medicationName}
+                        </h5>
                     </div>
                     <div className={styles.medicationInactiveCardRow}>
-                        <p className={styles.medicationInactiveText}>
-                            {'Every ' + medicationFrequency + ' hours'}
-                        </p>
-                        <p className={styles.medicationInactiveText}>
+                        <p>{'Every ' + medicationFrequency + ' hours'}</p>
+                        <p>
                             {'Starting at ' +
                                 (medicationAtBreakfast ? 'breakfast' : medicationStartHour + ' am')}
                         </p>
