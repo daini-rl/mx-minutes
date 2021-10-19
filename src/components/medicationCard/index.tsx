@@ -76,7 +76,7 @@ export default function MedicationCard({
                 <>
                     <div className={styles.medicationInactiveCardRow}>
                         <h5 className={styles.medicationInactiveName}>
-                            <span className='w3-margin-right'>{<Badge color={medicationColor} />}</span>{' '}
+                            <Badge color={medicationColor} />
                             {medicationName}
                         </h5>
                     </div>

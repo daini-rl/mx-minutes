@@ -59,7 +59,7 @@ export default function Dropdown({
                         key={index}
                         className={`w3-bar-item w3-button ${styles.dropdownOptionItemContainer}`}
                         onClick={() => handleOptionItemClick(index)}>
-                        {option.startItem && <span className='w3-margin-right'>{option.startItem}</span>}
+                        {option.startItem}
                         {option.text}
                     </button>
                 ))}

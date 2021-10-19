@@ -15,21 +15,17 @@ export default function DayCard() {
                     </h5>
                     <div className={styles.medicationsList}>
                         <p className={styles.medicationTitle}>
-                            <span className='w3-margin-right'>
-                                <Badge color={'orange'} />
-                            </span>
+                            <Badge color={'orange'} />
+
                             {'Tussin'}
                         </p>
                         <p className={styles.medicationTitle}>
-                            <span className='w3-margin-right'>
-                                <Badge color={'indigo'} />
-                            </span>
+                            <Badge color={'indigo'} />
+
                             {'Codeine'}
                         </p>
                         <p className={styles.medicationTitle}>
-                            <span className='w3-margin-right'>
-                                <Badge color={'pink'} />
-                            </span>
+                            <Badge color={'pink'} />
                             {'Acetaminophen'}
                         </p>
                     </div>
@@ -43,15 +39,11 @@ export default function DayCard() {
                     </h5>
                     <div className={styles.medicationsList}>
                         <p className={styles.medicationTitle}>
-                            <span className='w3-margin-right'>
-                                <Badge color={'indigo'} />
-                            </span>
+                            <Badge color={'indigo'} />
                             {'Codeine'}
                         </p>
                         <p className={styles.medicationTitle}>
-                            <span className='w3-margin-right'>
-                                <Badge color={'pink'} />
-                            </span>
+                            <Badge color={'pink'} />
                             {'Acetaminophen'}
                         </p>
                     </div>
