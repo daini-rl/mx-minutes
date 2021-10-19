@@ -7,7 +7,7 @@ interface BadgeI {
 export default function Badge({ color }: BadgeI) {
     return (
         <span className='w3-margin-right'>
-            <i className={`w3-${color} w3-round-large ${styles.dot}`}></i>
+            <i className={`w3-${color} w3-round-large ${styles.dotMotion}`}></i>
         </span>
     );
 }
