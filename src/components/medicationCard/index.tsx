@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from 'react';
 
-import { Input, Dropdown, Label, Checkbox, Button, Badge } from '../../components';
+import { Card, Input, Dropdown, Label, Checkbox, Button, Badge } from '../../components';
 import { OptionItemI } from '../dropdown';
 
 import styles from './medicationCard.module.css';
@@ -70,8 +70,7 @@ export default function MedicationCard({
     };
 
     return (
-        <div
-            className={`w3-container w3-padding-16 w3-margin-bottom w3-border w3-border-${medicationColor} w3-round`}>
+        <Card border borderColor={medicationColor}>
             {!isActive ? (
                 <>
                     <div className={styles.medicationInactiveCardRow}>
@@ -179,6 +178,6 @@ export default function MedicationCard({
                     )}
                 </div>
             </div>
-        </div>
+        </Card>
     );
 }
