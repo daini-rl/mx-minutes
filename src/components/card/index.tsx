@@ -10,7 +10,7 @@ interface CardProps {
 export default function Card({ title, children, isSecondary, buttons }: CardProps) {
     return (
         <div className='w3-container w3-border-bottom w3-padding-16'>
-            {title && (isSecondary ? <h3>{title}</h3> : <h3 className={styles.primaryTitle}>{title}</h3>)}
+            {title && (isSecondary ? <h4>{title}</h4> : <h4 className={styles.primaryTitle}>{title}</h4>)}
             {children}
             {buttons && <div className={styles.buttonsRow}>{buttons}</div>}
         </div>
