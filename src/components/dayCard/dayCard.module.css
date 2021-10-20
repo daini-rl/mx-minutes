@@ -1,5 +1,9 @@
-.hourSection {
+.dayCardContainer > div {
     margin-bottom: 24px;
+}
+
+.dayCardContainer > div:last-of-type {
+    margin-bottom: 0px;
 }
 
 .medicationsList {
@@ -8,7 +12,7 @@
     gap: 8px;
 }
 
-.medicationTitle {
+.medicationsList > p {
     display: inline-flex;
     align-items: center;
 }

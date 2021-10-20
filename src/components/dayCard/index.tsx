@@ -4,51 +4,67 @@ import styles from './dayCard.module.css';
 
 export default function DayCard() {
     return (
-        <Card isSecondary title='First day:'>
-            <div>
-                <div className={styles.hourSection}>
-                    <h5>
+        <>
+            <Card border cardClassName={styles.dayCardContainer}>
+                <h5 className='w3-center'>First Day</h5>
+                <div>
+                    <h6>
                         <span className='w3-margin-right'>
                             <i className='fa fa-clock-o'></i>
                         </span>
                         {'11:00'}
-                    </h5>
+                    </h6>
                     <div className={styles.medicationsList}>
-                        <p className={styles.medicationTitle}>
+                        <p>
                             <Badge color={'orange'} />
-
                             {'Tussin'}
                         </p>
-                        <p className={styles.medicationTitle}>
+                        <p>
                             <Badge color={'indigo'} />
-
                             {'Codeine'}
                         </p>
-                        <p className={styles.medicationTitle}>
+                        <p>
                             <Badge color={'pink'} />
                             {'Acetaminophen'}
                         </p>
                     </div>
                 </div>
-                <div className={styles.hourSection}>
-                    <h5>
+                <div>
+                    <h6>
                         <span className='w3-margin-right'>
                             <i className='fa fa-clock-o'></i>
                         </span>
                         {'4:20'}
-                    </h5>
+                    </h6>
                     <div className={styles.medicationsList}>
-                        <p className={styles.medicationTitle}>
+                        <p>
                             <Badge color={'indigo'} />
                             {'Codeine'}
                         </p>
-                        <p className={styles.medicationTitle}>
+                        <p>
                             <Badge color={'pink'} />
                             {'Acetaminophen'}
                         </p>
                     </div>
                 </div>
-            </div>
-        </Card>
+            </Card>
+            <Card border cardClassName={styles.dayCardContainer}>
+                <h5 className='w3-center'>Next Day</h5>
+                <div>
+                    <h6>
+                        <span className='w3-margin-right'>
+                            <i className='fa fa-clock-o'></i>
+                        </span>
+                        {'08:00'}
+                    </h6>
+                    <div className={styles.medicationsList}>
+                        <p>
+                            <Badge color={'orange'} />
+                            {'Tussin'}
+                        </p>
+                    </div>
+                </div>
+            </Card>
+        </>
     );
 }
