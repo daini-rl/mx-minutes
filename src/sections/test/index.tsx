@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
-import { Card, Badge, Dropdown, Button, MedicationCard } from '../../components';
+import { Card, Badge, Dropdown, Button, MedicationCard, DayCard, Label } from '../../components';
+import { MedicationDayI } from '../../components/dayCard';
 import { OptionItemI } from '../../components/dropdown';
 
 import { w3cssColors } from '../../utils/colors';
@@ -35,6 +36,15 @@ const medicationStartHours: Array<OptionItemI> = [
     { value: 11, text: '11:00' },
 ];
 
+const testMedicationDay: MedicationDayI = {
+    dayName: 'Menu of the Day',
+    medications: [
+        { color: 'orange', name: 'Tussin', scheduledHours: [0, 8, 16] },
+        { color: 'indigo', name: 'Ketorolaco', scheduledHours: [8, 20] },
+        { color: 'lime', name: 'Redotson', scheduledHours: [10] },
+    ],
+};
+
 export default function Test() {
     const [mealHour, setMealHour] = useState(-1);
     const medicationsColors = colorPickerOptions(); // affect this as selected
@@ -50,40 +60,59 @@ export default function Test() {
     return (
         <>
             <div className='w3-col l6'>
-                <Card title='Conditions'>
-                    <Card isSecondary title='First meal of the day?'>
-                        <Dropdown
-                            defaultText='Choose an hour'
-                            options={mealHours}
-                            value={mealHour}
-                            handleDropdownValue={setMealHour}
-                        />
+                <Card>
+                    <Card isSecondary title='Conditions:'>
+                        <Card border>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between',
+                                }}>
+                                <div>
+                                    <Label labelText='First meal of the day?' />
+                                </div>
+                                <div>
+                                    <Dropdown
+                                        defaultText='Choose an hour'
+                                        options={mealHours}
+                                        value={mealHour}
+                                        handleDropdownValue={setMealHour}
+                                    />
+                                </div>
+                            </div>
+                        </Card>
                     </Card>
                     <Card
                         isSecondary
-                        title='Medication(s)'
+                        title='Medication(s):'
                         buttons={
                             <>
                                 <Button buttonText={'Add medication'} buttonStateType='info' />
                                 <Button buttonText={'Time it'} buttonStateType='success' />
                             </>
                         }>
-                        <MedicationCard
-                            medicationsColors={medicationsColors}
-                            frequencyHours={frequencyHours}
-                            medicationStartHours={medicationStartHours}
-                            handleSaveMedication={handleSave}
-                        />
+                        <div className='multiple-cards-always?-inside-a-div'>
+                            <MedicationCard
+                                medicationsColors={medicationsColors}
+                                frequencyHours={frequencyHours}
+                                medicationStartHours={medicationStartHours}
+                                handleSaveMedication={handleSave}
+                            />
+                            <MedicationCard
+                                medicationsColors={medicationsColors}
+                                frequencyHours={frequencyHours}
+                                medicationStartHours={medicationStartHours}
+                                handleSaveMedication={handleSave}
+                            />
+                        </div>
                     </Card>
                 </Card>
             </div>
             <div className='w3-col l6'>
-                <Card title='Mx. Minutes says:'>
-                    <Card isSecondary title='First day:'>
-                        <p>{'11:11'}</p>
-                    </Card>
-                    <Card isSecondary title='Next day:'>
-                        <p>{'4:20'}</p>
+                <Card>
+                    <Card isSecondary title='Mx. Minutes says:'>
+                        <DayCard medicationDay={testMedicationDay} />
                     </Card>
                 </Card>
             </div>

@@ -1,0 +1,18 @@
+.dayCardContainer > div {
+    margin-bottom: 24px;
+}
+
+.dayCardContainer > div:last-of-type {
+    margin-bottom: 0px;
+}
+
+.medicationsList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.medicationsList > p {
+    display: inline-flex;
+    align-items: center;
+}

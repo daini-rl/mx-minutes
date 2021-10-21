@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from 'react';
 
-import { Input, Dropdown, Label, Checkbox, Button, Badge } from '../../components';
+import { Card, Input, Dropdown, Label, Checkbox, Button, Badge } from '../../components';
 import { OptionItemI } from '../dropdown';
 
 import styles from './medicationCard.module.css';
@@ -70,21 +70,18 @@ export default function MedicationCard({
     };
 
     return (
-        <div
-            className={`w3-container w3-padding-16 w3-margin-bottom w3-border w3-border-${medicationColor} w3-round`}>
+        <Card border borderColor={medicationColor}>
             {!isActive ? (
                 <>
                     <div className={styles.medicationInactiveCardRow}>
-                        <div className={styles.medicationInactiveName}>
-                            <span className='w3-margin-right'>{<Badge color={medicationColor} />}</span>
-                            <h5 className={styles.medicationInactiveText}>{medicationName}</h5>
-                        </div>
+                        <h5 className={styles.medicationInactiveName}>
+                            <Badge color={medicationColor} />
+                            {medicationName}
+                        </h5>
                     </div>
                     <div className={styles.medicationInactiveCardRow}>
-                        <p className={styles.medicationInactiveText}>
-                            {'Every ' + medicationFrequency + ' hours'}
-                        </p>
-                        <p className={styles.medicationInactiveText}>
+                        <p>{'Every ' + medicationFrequency + ' hours'}</p>
+                        <p>
                             {'Starting at ' +
                                 (medicationAtBreakfast ? 'breakfast' : medicationStartHour + ' am')}
                         </p>
@@ -181,6 +178,6 @@ export default function MedicationCard({
                     )}
                 </div>
             </div>
-        </div>
+        </Card>
     );
 }

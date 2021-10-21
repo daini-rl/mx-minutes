@@ -6,9 +6,5 @@ interface LabelI {
 }
 
 export default function Label({ labelText, textColor }: LabelI) {
-    return (
-        <label className={`w3-text-${textColor} ${styles.label}`}>
-            <b>{labelText}</b>
-        </label>
-    );
+    return <label className={`w3-text-${textColor} ${styles.label}`}>{labelText}</label>;
 }

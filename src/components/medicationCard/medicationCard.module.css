@@ -16,9 +16,6 @@
 .medicationInactiveName {
     display: inline-flex;
     align-items: center;
-}
-
-.medicationInactiveText {
     margin: 0px;
 }
 

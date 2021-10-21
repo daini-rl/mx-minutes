@@ -1,3 +1,11 @@
+.cardContainer {
+    padding-bottom: 16px !important;
+}
+
+.primaryTitle {
+    margin: 0px;
+}
+
 .buttonsRow {
     display: flex;
     align-items: center;
