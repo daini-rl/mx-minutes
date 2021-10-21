@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { Card, Badge, Dropdown, Button, MedicationCard, DayCard, Label } from '../../components';
+import { MedicationDayI } from '../../components/dayCard';
 import { OptionItemI } from '../../components/dropdown';
 
 import { w3cssColors } from '../../utils/colors';
@@ -34,6 +35,15 @@ const medicationStartHours: Array<OptionItemI> = [
     { value: 10, text: '10:00' },
     { value: 11, text: '11:00' },
 ];
+
+const testMedicationDay: MedicationDayI = {
+    dayName: 'Menu of the Day',
+    medications: [
+        { color: 'orange', name: 'Tussin', scheduledHours: [0, 8, 16] },
+        { color: 'indigo', name: 'Ketorolaco', scheduledHours: [8, 20] },
+        { color: 'lime', name: 'Redotson', scheduledHours: [10] },
+    ],
+};
 
 export default function Test() {
     const [mealHour, setMealHour] = useState(-1);
@@ -82,7 +92,13 @@ export default function Test() {
                                 <Button buttonText={'Time it'} buttonStateType='success' />
                             </>
                         }>
-                        <div className='multiple-cards-always-inside-a-div'>
+                        <div className='multiple-cards-always?-inside-a-div'>
+                            <MedicationCard
+                                medicationsColors={medicationsColors}
+                                frequencyHours={frequencyHours}
+                                medicationStartHours={medicationStartHours}
+                                handleSaveMedication={handleSave}
+                            />
                             <MedicationCard
                                 medicationsColors={medicationsColors}
                                 frequencyHours={frequencyHours}
@@ -96,7 +112,7 @@ export default function Test() {
             <div className='w3-col l6'>
                 <Card>
                     <Card isSecondary title='Mx. Minutes says:'>
-                        <DayCard />
+                        <DayCard medicationDay={testMedicationDay} />
                     </Card>
                 </Card>
             </div>
