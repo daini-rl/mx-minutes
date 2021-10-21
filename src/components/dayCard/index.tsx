@@ -23,14 +23,20 @@ export default function DayCard({ medicationDay }: DayCardI) {
     const medicationHoursFiltered = medicationHours.filter(
         (medicationHour, index) => medicationHours.indexOf(medicationHour) === index
     );
-    const medicationsGroupedByHours = medicationHoursFiltered.map(scheduledHour => {
-        const medicationGroup = {
-            scheduledHour,
-            medications: medicationDay.medications.filter(medication =>
-                medication.scheduledHours.includes(scheduledHour)
-            ),
-        };
-        return medicationGroup;
+    const medicationsGroupedByHours = medicationHoursFiltered.map(scheduledHour => ({
+        scheduledHour,
+        medications: medicationDay.medications.filter(medication =>
+            medication.scheduledHours.includes(scheduledHour)
+        ),
+    }));
+    medicationsGroupedByHours.sort(function (a, b) {
+        if (a.scheduledHour > b.scheduledHour) {
+            return 1;
+        }
+        if (a.scheduledHour < b.scheduledHour) {
+            return -1;
+        }
+        return 0;
     });
     return (
         <Card border cardClassName={styles.dayCardContainer}>
