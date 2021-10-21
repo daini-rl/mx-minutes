@@ -1,0 +1,14 @@
+.cardContainer {
+    padding-bottom: 16px !important;
+}
+
+.primaryTitle {
+    margin: 0px;
+}
+
+.buttonsRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+}

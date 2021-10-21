@@ -1,0 +1,16 @@
+.dropdownContainer:hover {
+    background-color: transparent;
+}
+
+.dropdownLabel {
+    display: block;
+}
+
+.dropdownButton:hover {
+    background-color: transparent !important;
+}
+
+.dropdownOptionItemContainer {
+    display: inline-flex !important;
+    align-items: center;
+}
