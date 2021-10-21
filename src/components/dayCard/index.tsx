@@ -55,7 +55,7 @@ export default function DayCard() {
                         <span className='w3-margin-right'>
                             <i className='fa fa-clock-o'></i>
                         </span>
-                        {'08:00'}
+                        {'01:11'}
                     </h6>
                     <div className={styles.medicationsList}>
                         <p>
